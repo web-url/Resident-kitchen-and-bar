@@ -1,1955 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0b0b">
-
-<title>Resident Kitchen & Bar</title>
-
-<style>
-
-/* =========================
-   RESET
-========================= */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  font-family:inherit;
-}
-
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:18px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(8,8,8,.92);
-  backdrop-filter:blur(15px);
-  z-index:999;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logo-circle{
-  width:45px;
-  height:45px;
-  border:2px solid #d5a84d;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#d5a84d;
-  font-size:23px;
-  font-weight:bold;
-}
-
-.logo-text strong{
-  display:block;
-  font-size:19px;
-}
-
-.logo-text small{
-  color:#d5a84d;
-  font-size:12px;
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-
-.nav-links a{
-  color:#ddd;
-  transition:.3s;
-}
-
-.nav-links a:hover{
-  color:#d5a84d;
-}
-
-.cart-btn{
-  border:1px solid #d5a84d;
-  background:transparent;
-  color:#fff;
-  padding:10px 16px;
-  border-radius:30px;
-  cursor:pointer;
-}
-
-.cart-count{
-  background:#d5a84d;
-  color:#111;
-  border-radius:50%;
-  padding:3px 7px;
-  margin-left:4px;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  position:relative;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.55),
-      rgba(0,0,0,.88)
-    ),
-    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=80");
-
-  background-size:cover;
-  background-position:center;
-}
-
-.hero-content{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-  padding-top:70px;
-}
-
-.eyebrow{
-  color:#d5a84d;
-  font-size:13px;
-  font-weight:bold;
-  letter-spacing:4px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:clamp(55px,8vw,100px);
-  line-height:.94;
-  max-width:850px;
-}
-
-.hero h1 span{
-  color:#d5a84d;
-}
-
-.hero-description{
-  max-width:600px;
-  color:#ddd;
-  line-height:1.8;
-  font-size:18px;
-  margin:28px 0;
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-}
-
-.primary-btn,
-.whatsapp-btn{
-  display:inline-block;
-  padding:15px 25px;
-  border-radius:30px;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.primary-btn{
-  background:#d5a84d;
-  color:#111;
-}
-
-.primary-btn:hover,
-.whatsapp-btn:hover{
-  transform:translateY(-3px);
-}
-
-.whatsapp-btn{
-  background:#20c063;
-  color:#fff;
-}
-
-.hero-bottom{
-  margin-top:35px;
-  display:flex;
-  gap:20px;
-  color:#bbb;
-  flex-wrap:wrap;
-}
-
-
-/* =========================
-   GENERAL SECTIONS
-========================= */
-
-section{
-  padding:100px 7%;
-}
-
-.section-title{
-  text-align:center;
-  max-width:700px;
-  margin:0 auto 55px;
-}
-
-.section-title h2{
-  font-size:clamp(40px,6vw,65px);
-  margin-bottom:15px;
-}
-
-.section-title h2 span{
-  color:#d5a84d;
-}
-
-.section-title p{
-  color:#aaa;
-  line-height:1.7;
-}
-
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-  background:#111;
-}
-
-.about-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:20px;
-}
-
-.about-main h2{
-  font-size:45px;
-  margin-bottom:20px;
-}
-
-.about-main h2 span{
-  color:#d5a84d;
-}
-
-.about-main p{
-  color:#aaa;
-  line-height:1.8;
-}
-
-.about-card{
-  background:#181818;
-  padding:30px;
-  border-radius:18px;
-  border:1px solid #292929;
-}
-
-.about-card .icon{
-  font-size:35px;
-  margin-bottom:20px;
-}
-
-.about-card h3{
-  margin-bottom:10px;
-}
-
-.about-card p{
-  color:#999;
-  line-height:1.6;
-}
-
-
-/* =========================
-   MENU
-========================= */
-
-.menu{
-  background:#0b0b0b;
-}
-
-.food-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.food-card{
-  background:#151515;
-  border:1px solid #292929;
-  border-radius:20px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.food-card:hover{
-  transform:translateY(-7px);
-  border-color:#d5a84d;
-}
-
-.food-image{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  display:block;
-}
-
-.food-info{
-  padding:20px;
-}
-
-.food-name{
-  font-size:21px;
-  margin-bottom:8px;
-}
-
-.food-price{
-  color:#d5a84d;
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:15px;
-}
-
-.food-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.stars{
-  display:flex;
-  gap:2px;
-}
-
-.star{
-  border:none;
-  background:none;
-  color:#555;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.star.active{
-  color:#d5a84d;
-}
-
-.food-links{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.review-food{
-  background:none;
-  border:none;
-  color:#aaa;
-  cursor:pointer;
-}
-
-.add-btn{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:none;
-  background:#d5a84d;
-  color:#111;
-  font-size:27px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.add-btn:hover{
-  transform:scale(1.08);
-}
-
-
-/* =========================
-   REVIEWS
-========================= */
-
-.reviews{
-  background:#111;
-}
-
-.review-list{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  gap:15px;
-}
-
-.review-card{
-  background:#181818;
-  border:1px solid #292929;
-  padding:25px;
-  border-radius:17px;
-}
-
-.review-card h4{
-  font-size:18px;
-}
-
-.review-stars{
-  color:#d5a84d;
-  margin:8px 0;
-  letter-spacing:2px;
-}
-
-.review-card p{
-  color:#aaa;
-  line-height:1.7;
-}
-
-.review-form{
-  max-width:600px;
-  margin:40px auto 0;
-  background:#181818;
-  padding:30px;
-  border-radius:20px;
-}
-
-.review-form h3{
-  margin-bottom:20px;
-}
-
-input,
-textarea{
-  width:100%;
-  background:#0d0d0d;
-  color:white;
-  border:1px solid #333;
-  padding:15px;
-  border-radius:10px;
-  margin:7px 0 15px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus{
-  border-color:#d5a84d;
-}
-
-textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.rating-picker{
-  display:flex;
-  gap:5px;
-  margin:5px 0 15px;
-}
-
-.rating-picker button{
-  background:none;
-  border:none;
-  color:#555;
-  font-size:30px;
-  cursor:pointer;
-}
-
-.rating-picker button.active{
-  color:#d5a84d;
-}
-
-
-/* =========================
-   LOCATION
-========================= */
-
-.location{
-  min-height:500px;
-  display:flex;
-  align-items:center;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.65),
-      rgba(0,0,0,.85)
-    ),
-    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80");
-
-  background-size:cover;
-  background-position:center;
-}
-
-.location-content{
-  max-width:650px;
-}
-
-.location h2{
-  font-size:clamp(40px,6vw,65px);
-  margin-bottom:20px;
-}
-
-.location h2 span{
-  color:#d5a84d;
-}
-
-.location p{
-  color:#ccc;
-  line-height:1.8;
-  margin-bottom:25px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#060606;
-  text-align:center;
-  padding:55px 7%;
-  color:#888;
-}
-
-.footer-name{
-  color:#fff;
-  font-size:25px;
-  font-weight:bold;
-  margin-bottom:12px;
-}
-
-.footer-gold{
-  color:#d5a84d;
-}
-
-
-/* =========================
-   MODALS
-========================= */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  z-index:3000;
-  padding:20px;
-  overflow-y:auto;
-}
-
-.modal-box{
-  max-width:600px;
-  margin:50px auto;
-  background:#171717;
-  border:1px solid #333;
-  border-radius:20px;
-  padding:30px;
-  position:relative;
-}
-
-.close-btn{
-  position:absolute;
-  top:12px;
-  right:18px;
-  background:none;
-  border:none;
-  color:white;
-  font-size:32px;
-  cursor:pointer;
-}
-
-.modal-box h2{
-  margin-bottom:20px;
-}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:17px 0;
-  border-bottom:1px solid #292929;
-}
-
-.cart-item-name{
-  font-weight:bold;
-}
-
-.cart-item-price{
-  color:#d5a84d;
-  margin-top:5px;
-}
-
-.quantity{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.quantity button{
-  width:30px;
-  height:30px;
-  border:none;
-  border-radius:50%;
-  cursor:pointer;
-}
-
-.cart-total{
-  margin:25px 0;
-  font-size:22px;
-  font-weight:bold;
-  color:#d5a84d;
-}
-
-.checkout-label{
-  display:block;
-  margin-top:10px;
-  color:#ccc;
-}
-
-.empty-cart{
-  text-align:center;
-  color:#999;
-  padding:30px 0;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:950px){
-
-  .nav-links a{
-    display:none;
-  }
-
-  .food-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .about-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .navbar{
-    padding:15px 5%;
-  }
-
-  section{
-    padding:75px 5%;
-  }
-
-  .hero-content{
-    width:90%;
-  }
-
-  .hero h1{
-    font-size:55px;
-  }
-
-  .hero-description{
-    font-size:16px;
-  }
-
-  .food-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-main h2{
-    font-size:38px;
-  }
-
-  .food-image{
-    height:230px;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Kitchen & Bar — Order via WhatsApp</title>
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="description" content="Resident Kitchen & Bar — Premium dining in Owerri. Order via WhatsApp.">
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUmVzaWRlbnQgS2l0Y2hlbiAmIEJhciIsInNob3J0X25hbWUiOiJSZXNpZGVudCBCYXIiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBmMGYwZiIsInRoZW1lX2NvbG9yIjoiI2M5YTg0YyIsImljb25zIjpbeyJzcmMiOiIiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --dark: #0f0f0f;
+      --darker: #080808;
+      --card: #1a1a1a;
+      --text: #f5f5f5;
+      --muted: #888;
+      --success: #22c55e;
+      --danger: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--darker); color: var(--text); overflow-x: hidden; }
+    .gold-text { color: var(--gold); }
+    .gold-bg { background: var(--gold); color: var(--dark); }
+    .btn {
+      padding: 12px 28px; border: none; border-radius: 8px; cursor: pointer;
+      font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block;
+    }
+    .btn-gold { background: var(--gold); color: var(--dark); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid var(--gold); color: var(--gold); background: transparent; }
+    .btn-outline:hover { background: var(--gold); color: var(--dark); }
+    .btn-whatsapp { background: #25d366; color: white; }
+    .btn-whatsapp:hover { background: #128c7e; }
+
+    /* Header */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    nav { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: 2px; }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .mobile-menu-btn { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+    /* Hero with Restaurant Background */
+    .hero {
+      min-height: 85vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 24px 60px;
+      background: 
+        linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.85) 70%, var(--darker) 100%),
+        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+    .hero p { font-size: 1.2rem; color: var(--text); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* Section */
+    section { padding: 50px 24px; max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 32px; }
+    .section-title h2 { font-size: 2.2rem; margin-bottom: 12px; }
+    .section-title p { color: var(--muted); }
+
+    /* Menu Grid - 2 per row */
+    .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .food-card {
+      background: var(--card); border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.15); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .food-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(201,168,76,0.1); }
+    .food-img {
+      width: 100%; height: 180px; background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 3rem;
+      position: relative; overflow: hidden;
+    }
+    .food-img img { width: 100%; height: 100%; object-fit: cover; }
+    .food-img .placeholder-icon { font-size: 3rem; opacity: 0.3; }
+    .food-body { padding: 16px; }
+    .food-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px; }
+    .food-name { font-size: 1.05rem; font-weight: 700; }
+    .food-price { color: var(--gold); font-weight: 800; font-size: 1rem; }
+    .food-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 10px; line-height: 1.4; }
+    .food-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .star-rating { display: flex; gap: 2px; }
+    .star-rating button {
+      background: none; border: none; color: var(--muted); font-size: 1rem; cursor: pointer; transition: color 0.2s;
+    }
+    .star-rating button.active, .star-rating button:hover { color: var(--gold); }
+    .qty-control {
+      display: flex; align-items: center; gap: 6px; background: var(--dark); border-radius: 8px; padding: 3px 6px;
+    }
+    .qty-control button {
+      width: 26px; height: 26px; border-radius: 6px; border: none; background: var(--card);
+      color: var(--gold); font-weight: bold; cursor: pointer; font-size: 0.9rem;
+    }
+    .qty-control span { min-width: 18px; text-align: center; font-weight: 600; font-size: 0.9rem; }
+    .review-btn {
+      background: none; border: 1px solid var(--muted); color: var(--muted);
+      padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; cursor: pointer;
+    }
+    .review-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Reviews Section */
+    .reviews-section { background: var(--card); border-radius: 20px; padding: 40px; }
+    .review-form { display: grid; gap: 16px; margin-bottom: 32px; }
+    .review-form input, .review-form textarea, .review-form select {
+      background: var(--dark); border: 1px solid rgba(201,168,76,0.2); color: var(--text);
+      padding: 14px 16px; border-radius: 10px; font-size: 1rem; width: 100%;
+    }
+    .review-form input:focus, .review-form textarea:focus, .review-form select:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .review-form textarea { min-height: 100px; resize: vertical; }
+    .review-list { display: grid; gap: 16px; }
+    .review-item {
+      background: var(--dark); padding: 20px; border-radius: 12px;
+      border-left: 3px solid var(--gold);
+    }
+    .review-item .reviewer { font-weight: 700; margin-bottom: 4px; }
+    .review-item .stars { color: var(--gold); margin-bottom: 8px; }
+    .review-item .review-text { color: var(--muted); font-size: 0.95rem; }
+    .review-item .review-date { font-size: 0.75rem; color: #555; margin-top: 8px; }
+
+    /* Cart / Checkout */
+    .cart-section { position: fixed; right: -420px; top: 0; width: 400px; max-width: 90vw; height: 100vh;
+      background: var(--card); z-index: 2000; transition: right 0.4s ease;
+      border-left: 1px solid rgba(201,168,76,0.2); display: flex; flex-direction: column;
+    }
+    .cart-section.open { right: 0; }
+    .cart-header { padding: 24px; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; justify-content: space-between; align-items: center; }
+    .cart-header h3 { font-size: 1.3rem; }
+    .close-cart { background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--dark); border-radius: 10px; margin-bottom: 10px; }
+    .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .cart-item-info span { color: var(--gold); font-size: 0.85rem; }
+    .cart-item-qty { color: var(--muted); font-size: 0.8rem; }
+    .remove-item { background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.1rem; }
+    .cart-footer { padding: 24px; border-top: 1px solid rgba(201,168,76,0.2); }
+    .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
+    .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1999; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .cart-overlay.show { opacity: 1; pointer-events: all; }
+
+    /* Checkout Form */
+    .checkout-form { display: grid; gap: 12px; margin-bottom: 16px; }
+    .checkout-form input {
+      background: var(--dark); border: 1px solid rgba(201,168,76,0.2); color: var(--text);
+      padding: 12px 14px; border-radius: 8px; font-size: 0.95rem; width: 100%;
+    }
+    .checkout-form input:focus { outline: none; border-color: var(--gold); }
+
+    /* Location */
+    .location-card {
+      background: var(--card); border-radius: 20px; padding: 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    .location-info h3 { font-size: 1.5rem; margin-bottom: 16px; }
+    .location-info p { color: var(--muted); margin-bottom: 8px; line-height: 1.7; }
+    .location-info .address { color: var(--text); font-size: 1.05rem; margin: 16px 0; padding: 16px; background: var(--dark); border-radius: 12px; border-left: 3px solid var(--gold); }
+    .map-box {
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border-radius: 16px;
+      height: 300px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+
+    /* Floating Cart Button */
+    .fab-cart {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1500;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--gold); color: var(--dark); border: none;
+      font-size: 1.4rem; cursor: pointer; box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fab-cart .badge {
+      position: absolute; top: -4px; right: -4px; background: var(--danger); color: white;
+      width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem;
+      display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+
+    /* Install PWA Banner */
+    .pwa-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; background: var(--card);
+      border-top: 1px solid rgba(201,168,76,0.2); padding: 16px 24px;
+      display: none; justify-content: space-between; align-items: center; z-index: 1600;
+    }
+    .pwa-banner.show { display: flex; }
+
+    /* Animations */
+    .fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--card); color: var(--text); padding: 14px 28px; border-radius: 10px;
+      border: 1px solid var(--gold); z-index: 3000; opacity: 0; transition: all 0.3s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .location-card { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+      .menu-grid { grid-template-columns: 1fr; gap: 12px; }
+      .hero { min-height: 70vh; padding-top: 80px; }
+    }
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
-
 <body>
 
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">RESIDENT <span>KITCHEN</span> & BAR</div>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#" class="btn btn-gold" onclick="toggleCart()" style="padding: 8px 20px; font-size: 0.9rem;">Order Now</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </nav>
+  </header>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<header class="navbar">
-
-  <a href="#home" class="logo">
-
-    <div class="logo-circle">
-      R
-    </div>
-
-    <div class="logo-text">
-      <strong>Resident</strong>
-      <small>Kitchen & Bar</small>
-    </div>
-
-  </a>
-
-
-  <div class="nav-links">
-
-    <a href="#home">Home</a>
-
-    <a href="#menu">Menu</a>
-
-    <a href="#reviews">Reviews</a>
-
-    <a href="#location">Location</a>
-
-    <button class="cart-btn" onclick="openCart()">
-      🛒 Cart
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-
-  </div>
-
-</header>
-
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero" id="home">
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      OWERRI • KITCHEN • BAR
-    </div>
-
-    <h1>
-      Good Food.
-      <span>Great Vibes.</span>
-      Every Time.
-    </h1>
-
-    <p class="hero-description">
-      Delicious meals, refreshing drinks and unforgettable
-      moments. Welcome to Resident Kitchen & Bar.
-    </p>
-
-    <div class="hero-buttons">
-
-      <a href="#menu" class="primary-btn">
-        Explore Menu
-      </a>
-
-      <a
-        href="https://wa.me/2347088272461"
-        target="_blank"
-        class="whatsapp-btn"
-      >
-        📲 Order on WhatsApp
-      </a>
-
-    </div>
-
-    <div class="hero-bottom">
-      <span>★ Great Food</span>
-      <span>•</span>
-      <span>🍹 Refreshing Drinks</span>
-      <span>•</span>
-      <span>📍 Owerri</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="about">
-
-  <div class="about-grid">
-
-    <div class="about-main">
-
-      <div class="eyebrow">
-        WELCOME HOME
+  <!-- Hero with Restaurant Background -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Taste the <span class="gold-text">Extraordinary</span></h1>
+      <p>Resident Kitchen & Bar — where every dish tells a story. Premium flavors, unforgettable moments, right here in Owerri.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn btn-gold">View Menu</a>
+        <a href="#location" class="btn btn-outline">Find Us</a>
       </div>
-
-      <h2>
-        A place for
-        <span>good moments.</span>
-      </h2>
-
-      <p>
-        Resident Kitchen & Bar brings together delicious
-        meals, refreshing drinks and a welcoming atmosphere.
-        Come hungry. Leave happy.
-      </p>
-
     </div>
+  </section>
 
-
-    <div class="about-card">
-
-      <div class="icon">🍽️</div>
-
-      <h3>Fresh Meals</h3>
-
-      <p>
-        Delicious meals prepared with care.
-      </p>
-
+  <!-- Menu -->
+  <section id="menu">
+    <div class="section-title">
+      <h2>Our <span class="gold-text">Menu</span></h2>
+      <p>10 signature dishes crafted with passion. Tap + to add to your cart.</p>
     </div>
+    <div class="menu-grid" id="menu-grid"></div>
+  </section>
 
-
-    <div class="about-card">
-
-      <div class="icon">🍹</div>
-
-      <h3>Great Drinks</h3>
-
-      <p>
-        Refresh yourself with our selection.
-      </p>
-
+  <!-- Reviews -->
+  <section id="reviews">
+    <div class="section-title">
+      <h2>Customer <span class="gold-text">Reviews</span></h2>
+      <p>See what our guests are saying — and share your own experience.</p>
     </div>
-
-
-    <div class="about-card">
-
-      <div class="icon">❤️</div>
-
-      <h3>Good Vibes</h3>
-
-      <p>
-        Come for the food. Stay for the vibes.
-      </p>
-
+    <div class="reviews-section">
+      <div class="review-form">
+        <input type="text" id="rev-name" placeholder="Your Name" />
+        <select id="rev-rating">
+          <option value="5">★★★★★ (5 Stars)</option>
+          <option value="4">★★★★ (4 Stars)</option>
+          <option value="3">★★★ (3 Stars)</option>
+          <option value="2">★★ (2 Stars)</option>
+          <option value="1">★ (1 Star)</option>
+        </select>
+        <textarea id="rev-text" placeholder="Tell us about your experience..."></textarea>
+        <button class="btn btn-gold" onclick="submitReview()" style="width: fit-content;">Submit Review</button>
+      </div>
+      <div class="review-list" id="review-list"></div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     MENU
-========================= -->
-
-<section class="menu" id="menu">
-
-  <div class="section-title">
-
-    <div class="eyebrow">
-      OUR MENU
+  <!-- Location -->
+  <section id="location">
+    <div class="section-title">
+      <h2>Find <span class="gold-text">Us</span></h2>
+      <p>Come dine with us at our Owerri location.</p>
     </div>
-
-    <h2>
-      Choose your
-      <span>favourite.</span>
-    </h2>
-
-    <p>
-      Add your favourite meals to your cart and
-      order directly through WhatsApp.
-    </p>
-
-  </div>
-
-
-  <div class="food-grid" id="foodGrid"></div>
-
-</section>
-
-
-
-<!-- =========================
-     REVIEWS
-========================= -->
-
-<section class="reviews" id="reviews">
-
-  <div class="section-title">
-
-    <div class="eyebrow">
-      CUSTOMER REVIEWS
+    <div class="location-card">
+      <div class="location-info">
+        <h3>📍 Resident Kitchen & Bar</h3>
+        <div class="address">
+          MCC, No 6 M. E. Idohosa Avenue,<br>
+          MCC Road, Uratta Road,<br>
+          Owerri 460242, Imo State, Nigeria
+        </div>
+        <p><strong>Phone:</strong> <a href="tel:08104959223" style="color:var(--gold);text-decoration:none;">0810 495 9223</a></p>
+        <p><strong>WhatsApp Order:</strong> <a href="https://wa.me/2348104959223" target="_blank" style="color:var(--gold);text-decoration:none;">Click to Chat</a></p>
+        <p><strong>Hours:</strong> Mon – Sun | 10:00 AM – 10:00 PM</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=No+6+M.+E.+Idohosa+Avenue+MCC+Road+Owerri+Imo" target="_blank" class="btn btn-outline" style="margin-top:12px;">Open in Google Maps</a>
+      </div>
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.5!2d7.05!3d5.48!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMjgnNDguMCJOIDfCsDAzJzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1"
+          width="100%" height="100%" style="border:0;border-radius:16px;filter:grayscale(0.6) invert(0.9);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
+  </section>
 
-    <h2>
-      What our customers
-      <span>say.</span>
-    </h2>
+  <!-- Footer -->
+  <footer style="text-align:center;padding:40px 24px;color:var(--muted);border-top:1px solid rgba(201,168,76,0.1);">
+    <p style="font-size:1.2rem;font-weight:700;margin-bottom:8px;">RESIDENT <span style="color:var(--gold);">KITCHEN</span> & BAR</p>
+    <p>© 2026 Resident Kitchen & Bar. All rights reserved.</p>
+    <p style="margin-top:8px;font-size:0.85rem;">Made with ❤️ in Owerri, Imo State</p>
+  </footer>
 
-  </div>
-
-
-  <div class="review-list" id="reviewList"></div>
-
-
-  <form class="review-form" id="reviewForm">
-
-    <h3>Leave a Review</h3>
-
-    <input
-      type="text"
-      id="reviewName"
-      placeholder="Your name"
-      required
-    >
-
-    <div class="rating-picker">
-
-      <button type="button" data-rating="1">★</button>
-      <button type="button" data-rating="2">★</button>
-      <button type="button" data-rating="3">★</button>
-      <button type="button" data-rating="4">★</button>
-      <button type="button" data-rating="5">★</button>
-
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-section" id="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 Your Order</h3>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
     </div>
-
-    <textarea
-      id="reviewMessage"
-      placeholder="Write your review..."
-      required
-    ></textarea>
-
-    <button class="primary-btn" type="submit">
-      Submit Review
-    </button>
-
-  </form>
-
-</section>
-
-
-
-<!-- =========================
-     LOCATION
-========================= -->
-
-<section class="location" id="location">
-
-  <div class="location-content">
-
-    <div class="eyebrow">
-      FIND US
-    </div>
-
-    <h2>
-      Come visit
-      <span>Resident.</span>
-    </h2>
-
-    <p>
-      Mcc, No 6 M. E. Idohosa Avenue,
-      Mcc Road, Uratta Road,
-      Owerri 460242, Imo State.
-    </p>
-
-    <a
-      class="primary-btn"
-      target="_blank"
-      href="https://www.google.com/maps/search/?api=1&query=Mcc%2C%20No%206%20M.%20E.%20Idohosa%20Avenue%2C%20Mcc%20Road%2C%20Uratta%20Road%2C%20Owerri%20460242%2C%20Imo"
-    >
-      📍 Open Google Maps
-    </a>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <div class="footer-name">
-    Resident Kitchen & Bar
-  </div>
-
-  <p>
-    Good food. Great vibes.
-  </p>
-
-  <p>
-    📞 0708 827 2461
-  </p>
-
-  <p>
-    <span class="footer-gold">
-      Owerri, Imo State
-    </span>
-  </p>
-
-  <br>
-
-  <p>
-    © 2026 Resident Kitchen & Bar
-  </p>
-
-</footer>
-
-
-
-<!-- =========================
-     CART MODAL
-========================= -->
-
-<div class="modal" id="cartModal">
-
-  <div class="modal-box">
-
-    <button class="close-btn" onclick="closeCart()">
-      ×
-    </button>
-
-    <h2>Your Order 🛒</h2>
-
-    <div id="cartItems"></div>
-
-    <div class="cart-total">
-      Total: ₦<span id="cartTotal">0</span>
-    </div>
-
-    <button
-      class="primary-btn"
-      style="width:100%;"
-      onclick="goToCheckout()"
-    >
-      Continue to Checkout
-    </button>
-
-  </div>
-
-</div>
-
-
-
-<!-- =========================
-     CHECKOUT MODAL
-========================= -->
-
-<div class="modal" id="checkoutModal">
-
-  <div class="modal-box">
-
-    <button class="close-btn" onclick="closeCheckout()">
-      ×
-    </button>
-
-    <h2>Checkout</h2>
-
-    <p style="color:#aaa;margin-bottom:20px;">
-      Enter your details below. Your order will be
-      prepared as a WhatsApp message.
-    </p>
-
-
-    <form id="checkoutForm">
-
-      <label class="checkout-label">
-        Your Name
-      </label>
-
-      <input
-        id="customerName"
-        type="text"
-        placeholder="Enter your name"
-        required
-      >
-
-
-      <label class="checkout-label">
-        Phone Number
-      </label>
-
-      <input
-        id="customerPhone"
-        type="tel"
-        placeholder="07012345678"
-        required
-      >
-
-
-      <label class="checkout-label">
-        Your Location / Delivery Address
-      </label>
-
-      <textarea
-        id="customerLocation"
-        placeholder="Enter your location"
-        required
-      ></textarea>
-
-
-      <button
-        type="submit"
-        class="whatsapp-btn"
-        style="width:100%;"
-      >
-        📲 Send Order to WhatsApp
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total">₦0</span>
+      </div>
+      <div class="checkout-form">
+        <input type="text" id="co-name" placeholder="Your Full Name" />
+        <input type="tel" id="co-phone" placeholder="Phone Number" />
+        <input type="text" id="co-location" placeholder="Delivery Location / Address" />
+      </div>
+      <button class="btn btn-whatsapp" style="width:100%; margin-bottom: 10px;" onclick="checkoutWhatsApp()">
+        📱 Order via WhatsApp
       </button>
-
-    </form>
-
+      <button class="btn btn-gold" style="width:100%;" onclick="checkoutWhatsApp()">
+        Order Now
+      </button>
+    </div>
   </div>
 
-</div>
-
-
-
-<script>
-
-/* =========================================
-   RESIDENT KITCHEN & BAR
-   MENU
-========================================= */
-
-const foods = [
-
-  {
-    id:1,
-    name:"Jollof Rice & Chicken",
-    price:4500,
-    image:"https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:2,
-    name:"Fried Rice & Chicken",
-    price:5000,
-    image:"https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:3,
-    name:"Peppered Chicken",
-    price:6000,
-    image:"https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:4,
-    name:"Grilled Fish",
-    price:7500,
-    image:"https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:5,
-    name:"Spaghetti Special",
-    price:4500,
-    image:"https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:6,
-    name:"Chicken & Chips",
-    price:5000,
-    image:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:7,
-    name:"Beef Burger",
-    price:5500,
-    image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:8,
-    name:"Pepper Soup",
-    price:4000,
-    image:"https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:9,
-    name:"Chicken Wings",
-    price:5500,
-    image:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=80"
-  },
-
-  {
-    id:10,
-    name:"Resident Special",
-    price:8000,
-    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-  }
-
-];
-
-
-/* =========================================
-   WHATSAPP NUMBER
-========================================= */
-
-const WHATSAPP_NUMBER =
-  "2347088272461";
-
-
-/* =========================================
-   CART
-========================================= */
-
-let cart = [];
-
-
-/* =========================================
-   DISPLAY FOODS
-========================================= */
-
-const foodGrid =
-  document.getElementById("foodGrid");
-
-
-foods.forEach(food => {
-
-  const card =
-    document.createElement("article");
-
-  card.className = "food-card";
-
-  card.innerHTML = `
-
-    <img
-      class="food-image"
-      src="${food.image}"
-      alt="${food.name}"
-    >
-
-    <div class="food-info">
-
-      <h3 class="food-name">
-        ${food.name}
-      </h3>
-
-      <div class="food-price">
-        ₦${food.price.toLocaleString()}
-      </div>
-
-      <div class="food-bottom">
-
-        <div>
-
-          <div
-            class="stars"
-            data-food="${food.id}"
-          >
-
-            <button
-              class="star"
-              onclick="rateFood(${food.id},1)"
-            >★</button>
-
-            <button
-              class="star"
-              onclick="rateFood(${food.id},2)"
-            >★</button>
-
-            <button
-              class="star"
-              onclick="rateFood(${food.id},3)"
-            >★</button>
-
-            <button
-              class="star"
-              onclick="rateFood(${food.id},4)"
-            >★</button>
-
-            <button
-              class="star"
-              onclick="rateFood(${food.id},5)"
-            >★</button>
-
-          </div>
-
-          <div class="food-links">
-
-            <button
-              class="review-food"
-              onclick="reviewFood('${food.name}')"
-            >
-              💬 Review
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="add-btn"
-          onclick="addToCart(${food.id})"
-        >
-          +
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  foodGrid.appendChild(card);
-
-});
-
-
-/* =========================================
-   RATE FOOD
-========================================= */
-
-function rateFood(id,rating){
-
-  const box =
-    document.querySelector(
-      `.stars[data-food="${id}"]`
-    );
-
-  const stars =
-    box.querySelectorAll(".star");
-
-  stars.forEach((star,index)=>{
-
-    star.classList.toggle(
-      "active",
-      index < rating
-    );
-
-  });
-
-}
-
-
-/* =========================================
-   REVIEW SPECIFIC FOOD
-========================================= */
-
-function reviewFood(foodName){
-
-  document.getElementById(
-    "reviewMessage"
-  ).value =
-    "My review for " + foodName + ": ";
-
-  document.getElementById(
-    "reviews"
-  ).scrollIntoView({
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================
-   ADD TO CART
-========================================= */
-
-function addToCart(id){
-
-  const food =
-    foods.find(item => item.id === id);
-
-  const existing =
-    cart.find(item => item.id === id);
-
-  if(existing){
-
-    existing.quantity++;
-
-  }else{
-
-    cart.push({
-      ...food,
-      quantity:1
-    });
-
-  }
-
-  updateCart();
-
-}
-
-
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
-
-function changeQuantity(id,amount){
-
-  const item =
-    cart.find(item => item.id === id);
-
-  if(!item) return;
-
-  item.quantity += amount;
-
-  if(item.quantity <= 0){
-
-    cart =
-      cart.filter(item => item.id !== id);
-
-  }
-
-  updateCart();
-
-}
-
-
-/* =========================================
-   UPDATE CART
-========================================= */
-
-function updateCart(){
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartCount =
-    document.getElementById("cartCount");
-
-  const cartTotal =
-    document.getElementById("cartTotal");
-
-
-  cartItems.innerHTML = "";
-
-  let total = 0;
-  let count = 0;
-
-
-  if(cart.length === 0){
-
-    cartItems.innerHTML =
-      `<div class="empty-cart">
-        Your cart is empty.
-      </div>`;
-
-  }
-
-
-  cart.forEach(item => {
-
-    total +=
-      item.price * item.quantity;
-
-    count += item.quantity;
-
-
-    const div =
-      document.createElement("div");
-
-    div.className = "cart-item";
-
-    div.innerHTML = `
-
-      <div>
-
-        <div class="cart-item-name">
-          ${item.name}
-        </div>
-
-        <div class="cart-item-price">
-          ₦${(
-            item.price *
-            item.quantity
-          ).toLocaleString()}
-        </div>
-
-      </div>
-
-      <div class="quantity">
-
-        <button
-          onclick="changeQuantity(${item.id},-1)"
-        >
-          −
-        </button>
-
-        <strong>
-          ${item.quantity}
-        </strong>
-
-        <button
-          onclick="changeQuantity(${item.id},1)"
-        >
-          +
-        </button>
-
-      </div>
-
-    `;
-
-    cartItems.appendChild(div);
-
-  });
-
-
-  cartCount.textContent = count;
-
-  cartTotal.textContent =
-    total.toLocaleString();
-
-}
-
-
-/* =========================================
-   OPEN CART
-========================================= */
-
-function openCart(){
-
-  document.getElementById(
-    "cartModal"
-  ).style.display = "block";
-
-  updateCart();
-
-}
-
-
-/* =========================================
-   CLOSE CART
-========================================= */
-
-function closeCart(){
-
-  document.getElementById(
-    "cartModal"
-  ).style.display = "none";
-
-}
-
-
-/* =========================================
-   CHECKOUT
-========================================= */
-
-function goToCheckout(){
-
-  if(cart.length === 0){
-
-    alert(
-      "Please add a food item to your cart first."
-    );
-
-    return;
-
-  }
-
-  closeCart();
-
-  document.getElementById(
-    "checkoutModal"
-  ).style.display = "block";
-
-}
-
-
-function closeCheckout(){
-
-  document.getElementById(
-    "checkoutModal"
-  ).style.display = "none";
-
-}
-
-
-/* =========================================
-   WHATSAPP ORDER
-========================================= */
-
-document
-.getElementById("checkoutForm")
-.addEventListener(
-  "submit",
-  function(event){
-
-    event.preventDefault();
-
-
-    const name =
-      document.getElementById(
-        "customerName"
-      ).value.trim();
-
-
-    const phone =
-      document.getElementById(
-        "customerPhone"
-      ).value.trim();
-
-
-    const location =
-      document.getElementById(
-        "customerLocation"
-      ).value.trim();
-
-
-    let total = 0;
-
-
-    let message =
-      "Hello Resident Kitchen & Bar 👋\n\n";
-
-
-    message +=
-      "*NEW FOOD ORDER*\n\n";
-
-
-    message +=
-      "*CUSTOMER DETAILS*\n";
-
-    message +=
-      "Name: " + name + "\n";
-
-    message +=
-      "Phone: " + phone + "\n";
-
-    message +=
-      "Location: " + location + "\n\n";
-
-
-    message +=
-      "*ORDER DETAILS*\n";
-
-
-    cart.forEach(item => {
-
-      const itemTotal =
-        item.price * item.quantity;
-
-      total += itemTotal;
-
-
-      message +=
-        "• " +
-        item.name +
-        " x" +
-        item.quantity +
-        " — ₦" +
-        itemTotal.toLocaleString() +
-        "\n";
-
-    });
-
-
-    message +=
-      "\n*TOTAL: ₦" +
-      total.toLocaleString() +
-      "*\n\n";
-
-
-    message +=
-      "Please confirm my order. Thank you!";
-
-
-    const url =
-      "https://wa.me/" +
-      WHATSAPP_NUMBER +
-      "?text=" +
-      encodeURIComponent(message);
-
-
-    window.open(
-      url,
-      "_blank"
-    );
-
-  }
-);
-
-
-/* =========================================
-   REVIEWS
-========================================= */
-
-let reviews =
-  JSON.parse(
-    localStorage.getItem(
-      "residentKitchenReviews"
-    )
-  ) || [];
-
-
-let selectedRating = 0;
-
-
-function displayReviews(){
-
-  const list =
-    document.getElementById(
-      "reviewList"
-    );
-
-  list.innerHTML = "";
-
-
-  if(reviews.length === 0){
-
-    list.innerHTML =
-      `<div class="review-card">
-        <h4>Be the first to leave a review ⭐</h4>
-        <p>Your experience matters to us.</p>
-      </div>`;
-
-    return;
-
-  }
-
-
-  reviews.forEach(review => {
-
-    const card =
-      document.createElement("div");
-
-    card.className =
-      "review-card";
-
-
-    const stars =
-      "★".repeat(review.rating) +
-      "☆".repeat(5-review.rating);
-
-
-    card.innerHTML = `
-
-      <h4>
-        ${review.name}
-      </h4>
-
-      <div class="review-stars">
-        ${stars}
-      </div>
-
-      <p>
-        ${review.message}
-      </p>
-
-    `;
-
-
-    list.appendChild(card);
-
-  });
-
-}
-
-
-displayReviews();
-
-
-/* =========================================
-   REVIEW STAR PICKER
-========================================= */
-
-document
-.querySelectorAll(
-  ".rating-picker button"
-)
-.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      selectedRating =
-        Number(
-          this.dataset.rating
-        );
-
-
-      document
-      .querySelectorAll(
-        ".rating-picker button"
-      )
-      .forEach((star,index)=>{
-
-        star.classList.toggle(
-          "active",
-          index < selectedRating
-        );
-
+  <!-- Floating Cart Button -->
+  <button class="fab-cart" onclick="toggleCart()">
+    🛒
+    <span class="badge" id="fab-badge" style="display:none;">0</span>
+  </button>
+
+  <!-- PWA Install Banner -->
+  <div class="pwa-banner" id="pwa-banner">
+    <span>📲 Install Resident Kitchen & Bar for quick ordering</span>
+    <button class="btn btn-gold" onclick="installPWA()" style="padding:8px 16px;font-size:0.85rem;">Install</button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ===================== DATA =====================
+    const menuData = [
+      { id: 1, name: "Jollof Rice & Grilled Chicken", price: 4500, desc: "Smoky party jollof with perfectly grilled chicken and coleslaw.", img: "🍗" },
+      { id: 2, name: "Resident Special Fried Rice", price: 5000, desc: "Chef's signature fried rice loaded with shrimp, beef & veggies.", img: "🍚" },
+      { id: 3, name: "Spaghetti Bolognese", price: 4000, desc: "Classic Italian spaghetti in rich tomato-meat sauce with herbs.", img: "🍝" },
+      { id: 4, name: "Suya Platter (Beef & Chicken)", price: 3500, desc: "Northern Nigerian spiced skewers with onions & tomatoes.", img: "🥩" },
+      { id: 5, name: "Seafood Okra Soup & Swallow", price: 5500, desc: "Fresh seafood okra with your choice of pounded yam or eba.", img: "🦐" },
+      { id: 6, name: "Resident Burger & Fries", price: 4200, desc: "Juicy beef patty, melted cheese, fresh veggies & crispy fries.", img: "🍔" },
+      { id: 7, name: "Pepper Soup (Goat Meat)", price: 3800, desc: "Hot & spicy traditional pepper soup with tender goat meat.", img: "🍲" },
+      { id: 8, name: "Shawarma Wrap (Chicken)", price: 2500, desc: "Grilled chicken, garlic sauce, veggies wrapped in warm flatbread.", img: "🌯" },
+      { id: 9, name: "Grilled Fish Platter", price: 6000, desc: "Whole grilled tilapia with plantain, sauce & garnishes.", img: "🐟" },
+      { id: 10, name: "Chapman Cocktail", price: 2000, desc: "Resident's special Chapman — refreshing, fruity & iconic.", img: "🍹" }
+    ];
+
+    // ===================== STATE =====================
+    let cart = {};
+    let foodRatings = {};
+    let reviews = JSON.parse(localStorage.getItem('rk_reviews') || '[]');
+    let deferredPrompt = null;
+
+    // ===================== INIT =====================
+    function init() {
+      renderMenu();
+      renderReviews();
+      updateCartUI();
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        document.getElementById('pwa-banner').classList.add('show');
       });
 
-    }
-  );
-
-});
-
-
-/* =========================================
-   SUBMIT REVIEW
-========================================= */
-
-document
-.getElementById("reviewForm")
-.addEventListener(
-  "submit",
-  function(event){
-
-    event.preventDefault();
-
-
-    if(selectedRating === 0){
-
-      alert(
-        "Please select a star rating."
-      );
-
-      return;
-
+      if ('serviceWorker' in navigator) {
+        const swCode = `
+          self.addEventListener('install', e => self.skipWaiting());
+          self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+          self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+        `;
+        const blob = new Blob([swCode], { type: 'application/javascript' });
+        navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+      }
     }
 
+    // ===================== MENU =====================
+    function renderMenu() {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = menuData.map(item => {
+        const qty = cart[item.id] || 0;
+        const rating = foodRatings[item.id] || 0;
+        return `
+          <div class="food-card fade-in">
+            <div class="food-img">
+              <span class="placeholder-icon">${item.img}</span>
+            </div>
+            <div class="food-body">
+              <div class="food-header">
+                <span class="food-name">${item.name}</span>
+                <span class="food-price">₦${item.price.toLocaleString()}</span>
+              </div>
+              <p class="food-desc">${item.desc}</p>
+              <div class="food-actions">
+                <div class="star-rating" id="stars-${item.id}">
+                  ${[1,2,3,4,5].map(s => `<button class="${s <= rating ? 'active' : ''}" onclick="rateFood(${item.id},${s})">★</button>`).join('')}
+                </div>
+                <button class="review-btn" onclick="openFoodReview(${item.id})">Review</button>
+                <div class="qty-control">
+                  <button onclick="changeQty(${item.id}, -1)">−</button>
+                  <span id="qty-${item.id}">${qty}</span>
+                  <button onclick="changeQty(${item.id}, 1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
 
-    const name =
-      document.getElementById(
-        "reviewName"
-      ).value.trim();
+    function rateFood(id, stars) {
+      foodRatings[id] = stars;
+      renderMenu();
+      showToast(`Rated ${stars} star${stars>1?'s':''}!`);
+    }
 
+    function openFoodReview(id) {
+      const item = menuData.find(x => x.id === id);
+      const name = prompt(`Write a review for "${item.name}":\nYour name:`);
+      if (!name) return;
+      const text = prompt("Your review:");
+      if (!text) return;
+      reviews.unshift({ name, text, rating: foodRatings[id] || 5, item: item.name, date: new Date().toLocaleDateString() });
+      localStorage.setItem('rk_reviews', JSON.stringify(reviews));
+      renderReviews();
+      showToast('Review submitted!');
+    }
 
-    const message =
-      document.getElementById(
-        "reviewMessage"
-      ).value.trim();
+    function changeQty(id, delta) {
+      const newQty = (cart[id] || 0) + delta;
+      if (newQty < 0) return;
+      if (newQty === 0) delete cart[id]; else cart[id] = newQty;
+      renderMenu();
+      updateCartUI();
+      if (delta > 0) showToast('Added to cart!');
+    }
 
+    // ===================== CART =====================
+    function updateCartUI() {
+      const items = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      const fabBadge = document.getElementById('fab-badge');
 
-    reviews.unshift({
+      const entries = Object.entries(cart);
+      const totalQty = entries.reduce((s, [,q]) => s + q, 0);
+      const totalPrice = entries.reduce((s, [id, q]) => s + (menuData.find(m => m.id == id).price * q), 0);
 
-      name:name,
+      fabBadge.textContent = totalQty;
+      fabBadge.style.display = totalQty > 0 ? 'flex' : 'none';
 
-      rating:selectedRating,
+      if (entries.length === 0) {
+        items.innerHTML = '<p style="text-align:center;color:var(--muted);padding:40px 0;">Your cart is empty.<br>Browse the menu and tap + to add items!</p>';
+      } else {
+        items.innerHTML = entries.map(([id, qty]) => {
+          const item = menuData.find(m => m.id == id);
+          return `
+            <div class="cart-item">
+              <div class="cart-item-info">
+                <h4>${item.name}</h4>
+                <span>₦${item.price.toLocaleString()} each</span>
+                <div class="cart-item-qty">Qty: ${qty}</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:700;color:var(--gold);">₦${(item.price * qty).toLocaleString()}</div>
+                <button class="remove-item" onclick="changeQty(${id}, -${qty})" title="Remove">🗑</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+      totalEl.textContent = '₦' + totalPrice.toLocaleString();
+    }
 
-      message:message
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('open');
+      document.getElementById('cart-overlay').classList.toggle('show');
+    }
 
+    // ===================== CHECKOUT / WHATSAPP =====================
+    function checkoutWhatsApp() {
+      const name = document.getElementById('co-name').value.trim();
+      const phone = document.getElementById('co-phone').value.trim();
+      const location = document.getElementById('co-location').value.trim();
+
+      if (Object.keys(cart).length === 0) { showToast('Your cart is empty!'); return; }
+      if (!name || !phone || !location) { showToast('Please fill in all details.'); return; }
+
+      let msg = `*🍽️ NEW ORDER - Resident Kitchen & Bar*%0A%0A`;
+      msg += `*Customer:* ${name}%0A`;
+      msg += `*Phone:* ${phone}%0A`;
+      msg += `*Delivery Location:* ${location}%0A%0A`;
+      msg += `*Order Items:*%0A`;
+
+      let total = 0;
+      Object.entries(cart).forEach(([id, qty]) => {
+        const item = menuData.find(m => m.id == id);
+        const sub = item.price * qty;
+        total += sub;
+        msg += `• ${item.name} x${qty} = ₦${sub.toLocaleString()}%0A`;
+      });
+      msg += `%0A*Total: ₦${total.toLocaleString()}*%0A`;
+      msg += `%0A_Please confirm my order. Thank you!_`;
+
+      const waUrl = `https://wa.me/2348104959223?text=${msg}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // ===================== REVIEWS =====================
+    function renderReviews() {
+      const list = document.getElementById('review-list');
+      if (reviews.length === 0) {
+        list.innerHTML = '<p style="color:var(--muted);text-align:center;">No reviews yet. Be the first!</p>';
+        return;
+      }
+      list.innerHTML = reviews.map(r => `
+        <div class="review-item">
+          <div class="reviewer">${r.name} ${r.item ? `<span style="color:var(--gold);font-size:0.8rem;">— ${r.item}</span>` : ''}</div>
+          <div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+          <div class="review-text">${r.text}</div>
+          <div class="review-date">${r.date}</div>
+        </div>
+      `).join('');
+    }
+
+    function submitReview() {
+      const name = document.getElementById('rev-name').value.trim();
+      const rating = parseInt(document.getElementById('rev-rating').value);
+      const text = document.getElementById('rev-text').value.trim();
+      if (!name || !text) { showToast('Please fill in all fields.'); return; }
+      reviews.unshift({ name, text, rating, date: new Date().toLocaleDateString() });
+      localStorage.setItem('rk_reviews', JSON.stringify(reviews));
+      renderReviews();
+      document.getElementById('rev-name').value = '';
+      document.getElementById('rev-text').value = '';
+      showToast('Thank you for your review!');
+    }
+
+    // ===================== UTILS =====================
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+      }
+      document.getElementById('pwa-banner').classList.remove('show');
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      });
     });
 
-
-    localStorage.setItem(
-      "residentKitchenReviews",
-      JSON.stringify(reviews)
-    );
-
-
-    displayReviews();
-
-
-    this.reset();
-
-
-    selectedRating = 0;
-
-
-    document
-    .querySelectorAll(
-      ".rating-picker button"
-    )
-    .forEach(star =>
-      star.classList.remove("active")
-    );
-
-
-    alert(
-      "Thank you for your review ❤️"
-    );
-
-  }
-);
-
-
-/* =========================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
-========================================= */
-
-window.addEventListener(
-  "click",
-  function(event){
-
-    const cartModal =
-      document.getElementById(
-        "cartModal"
-      );
-
-    const checkoutModal =
-      document.getElementById(
-        "checkoutModal"
-      );
-
-
-    if(event.target === cartModal){
-
-      closeCart();
-
-    }
-
-
-    if(event.target === checkoutModal){
-
-      closeCheckout();
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   START CART
-========================================= */
-
-updateCart();
-
-</script>
-
+    init();
+  </script>
 </body>
 </html>
