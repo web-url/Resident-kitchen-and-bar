@@ -48,22 +48,26 @@
     .nav-links a:hover { color: var(--gold); }
     .mobile-menu-btn { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
 
-    /* Hero with Restaurant Background */
+    /* Hero with Cool Restaurant Background */
     .hero {
       min-height: 85vh; display: flex; align-items: center; justify-content: center;
       text-align: center; padding: 100px 24px 60px;
       background: 
-        linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.85) 70%, var(--darker) 100%),
-        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        linear-gradient(135deg, rgba(8,8,8,0.4) 0%, rgba(15,15,15,0.7) 50%, rgba(8,8,8,0.9) 100%),
+        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       position: relative;
       overflow: hidden;
     }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 150px;
+      background: linear-gradient(to top, var(--darker), transparent);
+    }
     .hero-content { position: relative; z-index: 2; max-width: 800px; }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
-    .hero p { font-size: 1.2rem; color: var(--text); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 30px rgba(0,0,0,0.9); }
+    .hero p { font-size: 1.2rem; color: var(--text); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 15px rgba(0,0,0,0.8); }
     .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
     /* Section */
@@ -174,17 +178,23 @@
       border: 1px solid rgba(201,168,76,0.15);
     }
 
-    /* Floating Cart Button */
-    .fab-cart {
+    /* Floating Order Now Button (replaces cart icon) */
+    .fab-order {
       position: fixed; bottom: 24px; right: 24px; z-index: 1500;
-      width: 60px; height: 60px; border-radius: 50%;
+      padding: 14px 28px; border-radius: 50px;
       background: var(--gold); color: var(--dark); border: none;
-      font-size: 1.4rem; cursor: pointer; box-shadow: 0 8px 24px rgba(201,168,76,0.3);
-      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.3s;
     }
-    .fab-cart .badge {
-      position: absolute; top: -4px; right: -4px; background: var(--danger); color: white;
-      width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem;
+    .fab-order:hover {
+      background: var(--gold-light); transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+    }
+    .fab-order .badge {
+      position: absolute; top: -6px; right: -6px; background: var(--danger); color: white;
+      width: 24px; height: 24px; border-radius: 50%; font-size: 0.75rem;
       display: flex; align-items: center; justify-content: center; font-weight: 700;
     }
 
@@ -217,6 +227,7 @@
       .hero h1 { font-size: 2.2rem; }
       .menu-grid { grid-template-columns: 1fr; gap: 12px; }
       .hero { min-height: 70vh; padding-top: 80px; }
+      .fab-order { padding: 12px 20px; font-size: 0.9rem; }
     }
     @media (max-width: 480px) {
       .menu-grid { grid-template-columns: 1fr; }
@@ -239,7 +250,7 @@
     </nav>
   </header>
 
-  <!-- Hero with Restaurant Background -->
+  <!-- Hero with Cool Restaurant Background -->
   <section class="hero">
     <div class="hero-content">
       <h1>Taste the <span class="gold-text">Extraordinary</span></h1>
@@ -346,9 +357,9 @@
     </div>
   </div>
 
-  <!-- Floating Cart Button -->
-  <button class="fab-cart" onclick="toggleCart()">
-    🛒
+  <!-- Floating Order Now Button (replaces cart icon) -->
+  <button class="fab-order" onclick="toggleCart()">
+    🛒 Order Now
     <span class="badge" id="fab-badge" style="display:none;">0</span>
   </button>
 
