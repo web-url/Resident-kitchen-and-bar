@@ -375,17 +375,17 @@
   <script>
     // ===================== DATA =====================
     const menuData = [
-  { id: 1, name: "Spaghetti & Turkey", price: 15000, desc: "Delicious spaghetti served with tender turkey — a Resident favorite.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3092.jpg" },
-  { id: 2, name: "Okpa, Fish & Zobo", price: 9500, desc: "Traditional Okpa with grilled fish and refreshing Zobo drink.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3093.jpg" },
-  { id: 3, name: "Rice & Beans with Plantain", price: 12000, desc: "Perfectly cooked rice and beans served with sweet fried plantain.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3094.jpg" },
-  { id: 4, name: "Pap, Okpa, Plantain & Fried Egg", price: 10000, desc: "Hearty combo of pap, okpa, plantain and a crispy fried egg.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3095.jpg" },
-  { id: 5, name: "Yam & Egg Sauce", price: 8000, desc: "Soft boiled yam paired with rich, flavorful egg sauce.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3096.jpg" },
-  { id: 6, name: "Rice, Plantain & Cow Meat Pepper Soup", price: 13500, desc: "White rice and plantain with spicy cow meat pepper soup.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3097.jpg" },
-  { id: 7, name: "Plantain & Fried Egg", price: 5000, desc: "Sweet fried plantain served with a perfectly fried egg.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3098.jpg" },
-  { id: 8, name: "Porridge Yam & Fish", price: 8000, desc: "Warm yam porridge with seasoned grilled fish.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3099.jpg" },
-  { id: 9, name: "Fried Rice & Chicken", price: 15000, desc: "Chef's special fried rice with perfectly spiced chicken.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3100.jpg" },
-  { id: 10, name: "Pap, Plantain & Moi-Moi", price: 7000, desc: "Smooth pap with fried plantain and steamed moi-moi.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3101.jpg" }
-];
+      { id: 1, name: "Spaghetti & Turkey", price: 15000, desc: "Delicious spaghetti served with tender turkey — a Resident favorite.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3092.jpg" },
+      { id: 2, name: "Okpa, Fish & Zobo", price: 9500, desc: "Traditional Okpa with grilled fish and refreshing Zobo drink.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3093.jpg" },
+      { id: 3, name: "Rice & Beans with Plantain", price: 12000, desc: "Perfectly cooked rice and beans served with sweet fried plantain.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3094.jpg" },
+      { id: 4, name: "Pap, Okpa, Plantain & Fried Egg", price: 10000, desc: "Hearty combo of pap, okpa, plantain and a crispy fried egg.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3095.jpg" },
+      { id: 5, name: "Yam & Egg Sauce", price: 8000, desc: "Soft boiled yam paired with rich, flavorful egg sauce.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3096.jpg" },
+      { id: 6, name: "Rice, Plantain & Cow Meat Pepper Soup", price: 13500, desc: "White rice and plantain with spicy cow meat pepper soup.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3097.jpg" },
+      { id: 7, name: "Plantain & Fried Egg", price: 5000, desc: "Sweet fried plantain served with a perfectly fried egg.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3098.jpg" },
+      { id: 8, name: "Porridge Yam & Fish", price: 8000, desc: "Warm yam porridge with seasoned grilled fish.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3099.jpg" },
+      { id: 9, name: "Fried Rice & Chicken", price: 15000, desc: "Chef's special fried rice with perfectly spiced chicken.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3100.jpg" },
+      { id: 10, name: "Pap, Plantain & Moi-Moi", price: 7000, desc: "Smooth pap with fried plantain and steamed moi-moi.", img: "https://raw.githubusercontent.com/web-url/Resident-kitchen-and-bar/main/IMG_3101.jpg" }
+    ];
 
     // ===================== STATE =====================
     let cart = {};
@@ -425,7 +425,7 @@
         return `
           <div class="food-card fade-in">
             <div class="food-img">
-              <span class="placeholder-icon">${item.img}</span>
+              <img src="${item.img}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
             </div>
             <div class="food-body">
               <div class="food-header">
